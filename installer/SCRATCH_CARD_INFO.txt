@@ -1,0 +1,58 @@
+===============================================
+  ISX PULSE - SCRATCH CARD LICENSE SYSTEM
+===============================================
+
+Welcome to ISX Pulse Scratch Card Edition!
+
+This professional-grade financial data processing system for the Iraqi Stock Exchange (ISX) features an advanced scratch card license system with the following capabilities:
+
+SCRATCH CARD FEATURES:
+• One-Time Activation: Each scratch card can only be used once
+• Device Binding: License is tied to the device fingerprint
+• Rate Limiting: Protection against brute force attacks
+• Blacklisting: Automatic blocking of suspicious activity
+• Audit Logging: Complete history of all activation attempts
+• Offline Grace Period: Temporary operation without internet connection
+
+SECURITY ENHANCEMENTS:
+• AES-256 encryption for all sensitive data
+• Google Apps Script integration for centralized license management
+• Hardware fingerprinting for device identification
+• Comprehensive input validation and sanitization
+• Real-time monitoring and alerting
+
+REQUIREMENTS:
+Before proceeding with installation, ensure you have:
+
+1. Google Account with access to Google Sheets
+2. Google Apps Script deployed for license management
+3. Google Sheets API credentials (service account)
+4. Internet connection for initial setup
+5. Windows 10/11 (64-bit)
+6. Administrative privileges for installation
+
+PREPARATION CHECKLIST:
+□ Google Apps Script web app deployed and tested
+□ Google Sheets license management spreadsheet created
+□ Service account credentials (credentials.json) downloaded
+□ Apps Script URL ready for configuration
+□ Firewall configured to allow port 8080 (optional)
+
+POST-INSTALLATION SETUP:
+After installation, you will need to:
+
+1. Run the credential setup wizard
+2. Configure your Google Apps Script URL
+3. Place your credentials.json file
+4. Generate initial batch of scratch cards
+5. Test the activation flow
+
+SUPPORT:
+For technical support and documentation:
+• Check the installed documentation folder
+• Review the troubleshooting guide
+• Monitor the logs directory for error details
+
+Click Next to continue with the installation.
+
+===============================================

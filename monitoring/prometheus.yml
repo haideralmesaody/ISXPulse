@@ -1,0 +1,230 @@
+# Prometheus configuration for ISX Pulse Scratch Card License Monitoring
+global:
+  scrape_interval: 15s # Default scrape interval
+  evaluation_interval: 15s # Evaluate rules every 15 seconds
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  - "alerts/scratch-card.yml"
+  - "alerts/*.yml"
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - alertmanager:9093
+
+# Scrape configurations
+scrape_configs:
+  # ISX License Service - Main Application
+  - job_name: 'isx-license-service'
+    scrape_interval: 10s
+    scrape_timeout: 5s
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: 
+          - 'localhost:8080'  # Main web-licensed service
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: localhost:8080
+
+  # ISX License Service - Health Endpoint
+  - job_name: 'isx-license-health'
+    scrape_interval: 30s
+    scrape_timeout: 10s
+    metrics_path: '/healthz'
+    static_configs:
+      - targets: 
+          - 'localhost:8080'
+    metric_relabel_configs:
+      # Convert health check responses to metrics
+      - source_labels: [__name__]
+        regex: 'up'
+        target_label: 'health_check'
+        replacement: 'service_status'
+
+  # Scratch Card Specific Metrics
+  - job_name: 'scratch-card-metrics'
+    scrape_interval: 5s  # More frequent scraping for real-time card metrics
+    scrape_timeout: 3s
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: 
+          - 'localhost:8080'
+    metric_relabel_configs:
+      # Filter for scratch card specific metrics
+      - source_labels: [__name__]
+        regex: 'scratch_card_.*'
+        action: keep
+      - source_labels: [__name__]
+        regex: 'apps_script_.*'
+        action: keep
+      - source_labels: [__name__]
+        regex: 'fingerprint_.*'
+        action: keep
+      - source_labels: [__name__]
+        regex: 'batch_.*'
+        action: keep
+
+  # Google Apps Script Monitoring (External)
+  - job_name: 'apps-script-monitoring'
+    scrape_interval: 30s
+    scrape_timeout: 10s
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: 
+          - 'localhost:8080'  # Apps Script metrics from main service
+    metric_relabel_configs:
+      # Label Apps Script metrics for better organization
+      - source_labels: [__name__]
+        regex: 'apps_script_(.*)'
+        target_label: 'apps_script_metric'
+        replacement: '${1}'
+
+  # System Resource Monitoring
+  - job_name: 'node-exporter'
+    scrape_interval: 15s
+    static_configs:
+      - targets: 
+          - 'localhost:9100'  # Node exporter for system metrics
+    relabel_configs:
+      - target_label: 'service'
+        replacement: 'isx-license-system'
+
+  # License Cache Monitoring
+  - job_name: 'license-cache-metrics'
+    scrape_interval: 10s
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: 
+          - 'localhost:8080'
+    metric_relabel_configs:
+      # Cache-specific metrics
+      - source_labels: [__name__]
+        regex: '.*cache.*'
+        action: keep
+      - source_labels: [__name__]
+        regex: 'license_validation_cache_(.*)'
+        target_label: 'cache_operation'
+        replacement: '${1}'
+
+  # WebSocket Connection Monitoring
+  - job_name: 'websocket-metrics'
+    scrape_interval: 15s
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: 
+          - 'localhost:8080'
+    metric_relabel_configs:
+      # WebSocket specific metrics
+      - source_labels: [__name__]
+        regex: 'websocket_.*'
+        action: keep
+      - source_labels: [__name__]
+        regex: 'ws_.*'
+        action: keep
+
+# Recording rules for computed metrics
+recording_rules:
+  - name: scratch_card_computed_metrics
+    interval: 30s
+    rules:
+      # Overall success rate
+      - record: scratch_card:success_rate_5m
+        expr: |
+          (
+            sum(rate(scratch_card_activations_total[5m])) -
+            sum(rate(scratch_card_failures_by_type_total[5m]))
+          ) / sum(rate(scratch_card_activations_total[5m])) * 100
+
+      # Success rate by card type
+      - record: scratch_card:success_rate_by_type_5m
+        expr: |
+          (
+            sum(rate(scratch_card_activations_total[5m])) by (card_type) -
+            sum(rate(scratch_card_failures_by_type_total[5m])) by (card_type)
+          ) / sum(rate(scratch_card_activations_total[5m])) by (card_type) * 100
+
+      # Apps Script availability
+      - record: apps_script:availability_5m
+        expr: |
+          (
+            sum(rate(apps_script_requests_total[5m])) -
+            sum(rate(apps_script_errors_total[5m]))
+          ) / sum(rate(apps_script_requests_total[5m])) * 100
+
+      # Average batch processing throughput
+      - record: batch_processing:throughput_cards_per_second
+        expr: |
+          sum(rate(batch_activations_total[5m])) * on() group_left()
+          avg(active_pending_cards) / avg(batch_processing_duration_seconds)
+
+      # Cache efficiency
+      - record: license_cache:hit_rate_5m
+        expr: |
+          sum(rate(license_validation_cache_hits_total[5m])) /
+          (
+            sum(rate(license_validation_cache_hits_total[5m])) +
+            sum(rate(license_validation_cache_misses_total[5m]))
+          ) * 100
+
+      # Fingerprint validation success rate
+      - record: fingerprint:validation_success_rate_5m
+        expr: |
+          (
+            sum(rate(fingerprint_validations_total[5m])) -
+            sum(rate(fingerprint_mismatches_total[5m]))
+          ) / sum(rate(fingerprint_validations_total[5m])) * 100
+
+      # Rate limiting pressure
+      - record: rate_limiting:pressure_5m
+        expr: |
+          (
+            sum(rate(apps_script_rate_limits_total[5m])) +
+            sum(rate(license_rate_limit_hits_total[5m]))
+          )
+
+      # Security events rate
+      - record: security:events_rate_5m
+        expr: |
+          sum(rate(license_security_events_total[5m])) +
+          sum(rate(license_invalid_key_attempts_total[5m]))
+
+# Global configuration for all scrape jobs
+global_config:
+  # External labels attached to any time series or alerts
+  external_labels:
+    service: 'isx-pulse'
+    environment: 'production'
+    component: 'license-system'
+    
+# Storage configuration
+storage:
+  retention: "30d"  # Keep 30 days of data
+  retention_size: "10GB"  # Maximum storage size
+
+# TSDB configuration
+tsdb:
+  # Retention policies
+  retention_time: "30d"
+  # Compaction
+  max_block_duration: "2h"
+  min_block_duration: "2h"
+
+# Remote write configuration (optional - for long-term storage)
+# remote_write:
+#   - url: "https://your-remote-storage-endpoint/api/v1/write"
+#     queue_config:
+#       max_samples_per_send: 10000
+#       max_shards: 200
+#       capacity: 500000
+
+# Remote read configuration (optional - for long-term storage queries)
+# remote_read:
+#   - url: "https://your-remote-storage-endpoint/api/v1/read"
+#     read_recent: true

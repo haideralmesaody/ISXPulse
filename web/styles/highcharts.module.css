@@ -1,0 +1,340 @@
+/**
+ * Highcharts Stock Tools CSS Module
+ * Professional styles for technical analysis chart
+ */
+
+/* Stock Tools Wrapper */
+.stockToolsWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+/* Stock Tools Toolbar */
+.stockToolsToolbar {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 11;
+}
+
+.stockToolsToolbar li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stockToolsButton {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.stockToolsButton:hover {
+  background: #f0f0f0;
+  border-color: #d0d0d0;
+}
+
+.stockToolsButton.active {
+  background: #e0e0e0;
+  border-color: #c0c0c0;
+}
+
+/* Annotation Popup */
+.annotationPopup {
+  position: absolute;
+  background: white;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 12;
+  min-width: 200px;
+}
+
+.annotationPopupClose {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+  background: none;
+  border: none;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.annotationPopupClose:hover {
+  color: #000;
+  background: #f0f0f0;
+  border-radius: 2px;
+}
+
+/* Annotation Labels */
+.annotationLabel {
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #999;
+  border-radius: 3px;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Indicators List */
+.indicatorsList {
+  padding: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.indicatorItem {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background 0.2s;
+}
+
+.indicatorItem:hover {
+  background: #f0f0f0;
+}
+
+.indicatorItem.selected {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+/* Separator */
+.toolbarSeparator {
+  width: 1px;
+  height: 24px;
+  background: #d0d0d0;
+  margin: 0 4px;
+  align-self: center;
+}
+
+/* Full Screen */
+.fullscreenContainer {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999 !important;
+  background: white;
+}
+
+/* Context Menu */
+.contextMenu {
+  position: absolute;
+  background: white;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  padding: 4px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 150px;
+}
+
+.contextMenuItem {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.contextMenuItem:hover {
+  background: #f0f0f0;
+}
+
+.contextMenuSeparator {
+  height: 1px;
+  background: #e0e0e0;
+  margin: 4px 0;
+}
+
+/* Crosshair */
+.crosshair {
+  stroke: #999;
+  stroke-width: 1px;
+  stroke-dasharray: 3, 3;
+}
+
+/* Loading Overlay */
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Range Selector */
+.rangeSelectorButton {
+  cursor: pointer;
+  padding: 4px 8px;
+  margin: 0 2px;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  background: white;
+  transition: all 0.2s;
+}
+
+.rangeSelectorButton:hover {
+  background: #f0f0f0;
+  border-color: #b0b0b0;
+}
+
+.rangeSelectorButton.selected {
+  background: #0066cc;
+  color: white;
+  border-color: #0052a3;
+}
+
+/* Tooltip */
+.customTooltip {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  padding: 8px 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Dark Theme Support */
+@media (prefers-color-scheme: dark) {
+  .stockToolsToolbar {
+    background: rgba(40, 40, 40, 0.95);
+    border-color: #404040;
+  }
+  
+  .stockToolsButton:hover {
+    background: #505050;
+    border-color: #606060;
+  }
+  
+  .stockToolsButton.active {
+    background: #606060;
+    border-color: #707070;
+  }
+  
+  .annotationPopup,
+  .contextMenu,
+  .indicatorsList {
+    background: #2a2a2a;
+    border-color: #404040;
+    color: #e0e0e0;
+  }
+  
+  .contextMenuItem:hover,
+  .indicatorItem:hover {
+    background: #3a3a3a;
+  }
+  
+  .annotationLabel {
+    background: rgba(40, 40, 40, 0.9);
+    border-color: #606060;
+    color: #e0e0e0;
+  }
+  
+  .fullscreenContainer {
+    background: #1a1a1a;
+  }
+  
+  .customTooltip {
+    background: rgba(40, 40, 40, 0.95);
+    border-color: #404040;
+    color: #e0e0e0;
+  }
+  
+  .rangeSelectorButton {
+    background: #2a2a2a;
+    border-color: #404040;
+    color: #e0e0e0;
+  }
+  
+  .rangeSelectorButton:hover {
+    background: #3a3a3a;
+    border-color: #505050;
+  }
+  
+  .rangeSelectorButton.selected {
+    background: #0066cc;
+    color: white;
+    border-color: #0052a3;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .stockToolsToolbar {
+    display: none;
+  }
+  
+  .annotationPopup {
+    max-width: 90vw;
+  }
+  
+  .indicatorsList {
+    max-height: 300px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .stockToolsToolbar,
+  .contextMenu,
+  .annotationPopup {
+    display: none !important;
+  }
+}

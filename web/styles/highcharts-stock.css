@@ -1,0 +1,609 @@
+/**
+ * Highcharts Stock Tools and Annotations CSS
+ * Based on official Highcharts CSS for stock tools GUI and annotations popup
+ */
+
+/* Container Styles */
+.highcharts-chart-container {
+  min-height: 400px;
+  height: 100%;
+  position: relative;
+}
+
+@media screen and (max-width: 600px) {
+  .highcharts-chart-container {
+    min-height: 300px;
+  }
+}
+
+/* Stock Tools GUI Styles */
+.highcharts-stocktools-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 100%;
+  z-index: 10;
+}
+
+.highcharts-stocktools-toolbar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  z-index: 11;
+}
+
+/* Dark mode styles for stock tools */
+.dark .highcharts-stocktools-toolbar {
+  background: rgba(26, 32, 44, 0.98);
+  border: 1px solid #4a5568;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Stock tools icon colors */
+/* Light mode */
+.highcharts-stocktools-toolbar svg,
+.highcharts-stocktools-toolbar path,
+.highcharts-stocktools-toolbar rect,
+.highcharts-stocktools-toolbar circle,
+.highcharts-stocktools-toolbar line,
+.highcharts-stocktools-toolbar polygon,
+.highcharts-stocktools-toolbar polyline,
+.highcharts-stocktools-toolbar g {
+  fill: #4a5568;
+  stroke: #4a5568;
+}
+
+/* Icons with stroke only */
+.highcharts-stocktools-toolbar path[fill="none"],
+.highcharts-stocktools-toolbar line[fill="none"] {
+  fill: none;
+  stroke: #4a5568;
+  stroke-width: 2px;
+}
+
+/* Dark mode */
+.dark .highcharts-stocktools-toolbar svg,
+.dark .highcharts-stocktools-toolbar path,
+.dark .highcharts-stocktools-toolbar rect,
+.dark .highcharts-stocktools-toolbar circle,
+.dark .highcharts-stocktools-toolbar line,
+.dark .highcharts-stocktools-toolbar polygon,
+.dark .highcharts-stocktools-toolbar polyline,
+.dark .highcharts-stocktools-toolbar g {
+  fill: #cbd5e0;
+  stroke: #cbd5e0;
+}
+
+/* Dark mode icons with stroke only */
+.dark .highcharts-stocktools-toolbar path[fill="none"],
+.dark .highcharts-stocktools-toolbar line[fill="none"] {
+  fill: none;
+  stroke: #cbd5e0;
+  stroke-width: 2px;
+}
+
+/* Button symbols */
+.highcharts-button-symbol,
+.highcharts-button-symbol path,
+.highcharts-button-symbol rect,
+.highcharts-button-symbol circle {
+  fill: #4a5568;
+  stroke: #4a5568;
+}
+
+.dark .highcharts-button-symbol,
+.dark .highcharts-button-symbol path,
+.dark .highcharts-button-symbol rect,
+.dark .highcharts-button-symbol circle {
+  fill: #cbd5e0;
+  stroke: #cbd5e0;
+}
+
+/* Menu item button icons */
+.highcharts-menu-item-btn svg,
+.highcharts-menu-item-btn svg *,
+.highcharts-menu-item-btn path,
+.highcharts-menu-item-btn rect,
+.highcharts-menu-item-btn circle,
+.highcharts-menu-item-btn line {
+  fill: #4a5568;
+  stroke: #4a5568;
+}
+
+.dark .highcharts-menu-item-btn svg,
+.dark .highcharts-menu-item-btn svg *,
+.dark .highcharts-menu-item-btn path,
+.dark .highcharts-menu-item-btn rect,
+.dark .highcharts-menu-item-btn circle,
+.dark .highcharts-menu-item-btn line {
+  fill: #cbd5e0;
+  stroke: #cbd5e0;
+}
+
+/* Ensure visibility for stock tools GUI buttons */
+.highcharts-stocktools-toolbar .highcharts-menu-item-btn:not(:hover) svg {
+  opacity: 1;
+}
+
+/* Icon hover states */
+.highcharts-stocktools-toolbar .highcharts-menu-item-btn:hover svg,
+.highcharts-stocktools-toolbar .highcharts-menu-item-btn:hover svg *,
+.highcharts-stocktools-toolbar .highcharts-menu-item-btn.highcharts-active svg,
+.highcharts-stocktools-toolbar .highcharts-menu-item-btn.highcharts-active svg * {
+  fill: #3182ce;
+  stroke: #3182ce;
+}
+
+.dark .highcharts-stocktools-toolbar .highcharts-menu-item-btn:hover svg,
+.dark .highcharts-stocktools-toolbar .highcharts-menu-item-btn:hover svg *,
+.dark .highcharts-stocktools-toolbar .highcharts-menu-item-btn.highcharts-active svg,
+.dark .highcharts-stocktools-toolbar .highcharts-menu-item-btn.highcharts-active svg * {
+  fill: #4299e1;
+  stroke: #4299e1;
+}
+
+.highcharts-stocktools-toolbar li {
+  list-style: none;
+  margin: 3px 0;
+  padding: 0;
+}
+
+.highcharts-stocktools-toolbar .highcharts-menu-item-btn {
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 3px;
+  padding: 5px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.dark .highcharts-stocktools-toolbar .highcharts-menu-item-btn {
+  background: #2d3748;
+  border: 1px solid #4a5568;
+}
+
+.highcharts-stocktools-toolbar .highcharts-menu-item-btn:hover {
+  background: #edf2f7;
+  border-color: #3182ce;
+}
+
+.dark .highcharts-stocktools-toolbar .highcharts-menu-item-btn:hover {
+  background: #4a5568;
+  border-color: #4299e1;
+}
+
+.highcharts-stocktools-toolbar .highcharts-menu-item-btn.highcharts-active {
+  background: #bee3f8;
+  border-color: #2b6cb0;
+}
+
+.dark .highcharts-stocktools-toolbar .highcharts-menu-item-btn.highcharts-active {
+  background: #2b6cb0;
+  border-color: #63b3ed;
+}
+
+/* Additional icon fixes for better visibility */
+.highcharts-stocktools-toolbar .highcharts-button {
+  opacity: 1;
+}
+
+.highcharts-stocktools-toolbar .highcharts-button text {
+  fill: #333333;
+}
+
+.dark .highcharts-stocktools-toolbar .highcharts-button text {
+  fill: #e0e0e0;
+}
+
+/* Submenu styles */
+.highcharts-submenu-wrapper {
+  position: absolute;
+  left: 40px;
+  top: 0;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  padding: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: none;
+  z-index: 12;
+}
+
+.dark .highcharts-submenu-wrapper {
+  background: rgba(42, 42, 42, 0.95);
+  border: 1px solid #505050;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.highcharts-submenu-wrapper.highcharts-active {
+  display: block;
+}
+
+.highcharts-submenu-wrapper li {
+  list-style: none;
+  margin: 3px 0;
+  padding: 0;
+}
+
+/* Annotation Popup Styles */
+.highcharts-popup {
+  position: absolute;
+  background: white;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  z-index: 100;
+  min-width: 250px;
+}
+
+.dark .highcharts-popup {
+  background: #2a2a2a;
+  border: 1px solid #505050;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  color: #e0e0e0;
+}
+
+.highcharts-popup-close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+  background: none;
+  border: none;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 18px;
+}
+
+.highcharts-popup-close:hover {
+  color: #000;
+  background: #f0f0f0;
+  border-radius: 2px;
+}
+
+.highcharts-popup h5 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.dark .highcharts-popup h5 {
+  color: #e0e0e0;
+}
+
+.highcharts-popup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.highcharts-popup-form-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.highcharts-popup-form-row label {
+  flex: 0 0 80px;
+  font-size: 12px;
+  color: #666;
+}
+
+.dark .highcharts-popup-form-row label {
+  color: #a0a0a0;
+}
+
+.highcharts-popup-form-row input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.dark .highcharts-popup-form-row input {
+  background: #3a3a3a;
+  border: 1px solid #505050;
+  color: #e0e0e0;
+}
+
+.highcharts-popup-form-row select {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  font-size: 12px;
+  background: white;
+}
+
+.dark .highcharts-popup-form-row select {
+  background: #3a3a3a;
+  border: 1px solid #505050;
+  color: #e0e0e0;
+}
+
+.highcharts-popup-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  justify-content: flex-end;
+}
+
+.highcharts-popup-button {
+  padding: 6px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  background: white;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.highcharts-popup-button:hover {
+  background: #f0f0f0;
+}
+
+.highcharts-popup-button.highcharts-popup-main-btn {
+  background: #2f7ed8;
+  color: white;
+  border-color: #2f7ed8;
+}
+
+.highcharts-popup-button.highcharts-popup-main-btn:hover {
+  background: #2563a6;
+  border-color: #2563a6;
+}
+
+/* Annotation Edit Styles */
+.highcharts-annotation-edit-button {
+  position: absolute;
+  background: white;
+  border: 1px solid #999;
+  border-radius: 2px;
+  padding: 2px 5px;
+  font-size: 10px;
+  cursor: pointer;
+  z-index: 7;
+}
+
+.highcharts-annotation-toolbar {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  padding: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 50;
+  display: flex;
+  gap: 5px;
+}
+
+/* Label Styles */
+.highcharts-label-annotation {
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #999;
+  border-radius: 3px;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Crosshair */
+.highcharts-crosshair {
+  stroke: #999;
+  stroke-width: 1px;
+  stroke-dasharray: 3, 3;
+}
+
+/* Navigator */
+.highcharts-navigator-mask-inside {
+  fill: rgba(102, 133, 194, 0.3);
+}
+
+.highcharts-navigator-outline {
+  stroke: #cccccc;
+  fill: none;
+}
+
+/* Range Selector */
+.highcharts-range-selector-buttons text {
+  cursor: pointer;
+}
+
+.highcharts-range-selector-buttons text:hover {
+  fill: #0066cc;
+}
+
+.highcharts-range-selector-buttons .highcharts-button {
+  cursor: pointer;
+  fill: #f7f7f7;
+  stroke: #cccccc;
+  stroke-width: 1px;
+}
+
+.highcharts-range-selector-buttons .highcharts-button:hover {
+  fill: #e6e6e6;
+}
+
+.highcharts-range-selector-buttons .highcharts-button.highcharts-button-pressed {
+  fill: #0066cc;
+  stroke: #0066cc;
+}
+
+.highcharts-range-selector-buttons .highcharts-button.highcharts-button-pressed text {
+  fill: white;
+  font-weight: bold;
+}
+
+/* Scrollbar */
+.highcharts-scrollbar-thumb {
+  fill: #cccccc;
+  stroke: #cccccc;
+  stroke-width: 1px;
+}
+
+.highcharts-scrollbar-button {
+  fill: #e6e6e6;
+  stroke: #cccccc;
+  stroke-width: 1px;
+  cursor: pointer;
+}
+
+.highcharts-scrollbar-arrow {
+  fill: #666666;
+}
+
+.highcharts-scrollbar-rifles {
+  fill: #666666;
+}
+
+.highcharts-scrollbar-track {
+  fill: #f2f2f2;
+  stroke: #f2f2f2;
+  stroke-width: 1px;
+}
+
+/* Context Menu */
+.highcharts-contextmenu {
+  position: absolute;
+  background: white;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  padding: 5px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  z-index: 1000;
+  min-width: 150px;
+}
+
+.dark .highcharts-contextmenu {
+  background: #2a2a2a;
+  border: 1px solid #505050;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.highcharts-contextmenu-item {
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.dark .highcharts-contextmenu-item {
+  color: #e0e0e0;
+}
+
+.highcharts-contextmenu-item:hover {
+  background: #f0f0f0;
+}
+
+.dark .highcharts-contextmenu-item:hover {
+  background: #3a3a3a;
+}
+
+.highcharts-contextmenu hr {
+  margin: 5px 0;
+  border: none;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Tooltip */
+.highcharts-tooltip-box {
+  stroke-width: 1px;
+  stroke: #d0d0d0;
+  fill: rgba(255, 255, 255, 0.95);
+  fill-opacity: 0.95;
+}
+
+.highcharts-tooltip text {
+  fill: #333333;
+}
+
+/* Loading */
+.highcharts-loading {
+  position: absolute;
+  background-color: white;
+  opacity: 0.5;
+  text-align: center;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.highcharts-loading-inner {
+  font-weight: bold;
+  position: relative;
+  top: 45%;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Additional Button Styles */
+.highcharts-button {
+  fill: #f7f7f7;
+  stroke: #cccccc;
+  cursor: pointer;
+}
+
+.highcharts-button:hover {
+  fill: #e6e6e6;
+}
+
+.highcharts-button text {
+  fill: #333333;
+}
+
+/* Navigation Icons */
+.highcharts-navigator-handle {
+  fill: #f2f2f2;
+  stroke: #999999;
+}
+
+.highcharts-navigator-mask-inside {
+  fill: rgba(102, 133, 194, 0.3);
+  fill-opacity: 0.3;
+}
+
+/* Ensure all SVG icons are visible */
+svg.highcharts-button-symbol,
+svg.highcharts-menu-item-btn {
+  fill: #4a5568;
+}
+
+/* Stock tools specific icon fixes */
+.highcharts-indicators .highcharts-button-symbol,
+.highcharts-toggle-annotations .highcharts-button-symbol,
+.highcharts-measure-xy .highcharts-button-symbol,
+.highcharts-zoom-x .highcharts-button-symbol,
+.highcharts-full-screen .highcharts-button-symbol {
+  stroke: #4a5568;
+  fill: #4a5568;
+}
+
+/* Dark mode stock tools specific icon fixes */
+.dark .highcharts-indicators .highcharts-button-symbol,
+.dark .highcharts-toggle-annotations .highcharts-button-symbol,
+.dark .highcharts-measure-xy .highcharts-button-symbol,
+.dark .highcharts-zoom-x .highcharts-button-symbol,
+.dark .highcharts-full-screen .highcharts-button-symbol {
+  stroke: #cbd5e0;
+  fill: #cbd5e0;
+}

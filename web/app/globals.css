@@ -1,0 +1,263 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Iraqi Investor Brand Colors */
+    --background: 40 6% 97%;        /* #f8f6f0 - Logo background off-white */
+    --foreground: 222.2 84% 4.9%;
+    --card: 40 6% 97%;              /* #f8f6f0 - Consistent with logo */
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 40 6% 97%;           /* #f8f6f0 - Consistent theming */
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 143 32% 26%;        /* Iraqi Investor forest green #2d5a3d */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 138 40% 18%;      /* Iraqi Investor darker green #1a3d2b */
+    --secondary-foreground: 210 40% 98%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 0 62% 49%;           /* Iraqi Investor bull red #c53030 */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 143 32% 26%;           /* Iraqi Investor primary green for focus rings */
+    --radius: 0.5rem;
+    
+    /* Iraqi Investor custom variables */
+    --investor-primary: 143 32% 26%;     /* #2d5a3d */
+    --investor-secondary: 138 40% 18%;   /* #1a3d2b */
+    --investor-accent: 0 62% 49%;        /* #c53030 */
+    
+    /* Status colors for operations */
+    --success: 142 71% 45%;              /* Green for success states */
+    --warning: 38 92% 50%;               /* Yellow/Amber for warnings */
+    --error: 0 84% 60%;                  /* Red for errors */
+    --info: 199 89% 48%;                 /* Blue for information */
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 143 50% 45%;        /* Lighter Iraqi Investor green for dark mode */
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 0 75% 60%;           /* Lighter Iraqi Investor red for dark mode */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 143 50% 45%;           /* Lighter Iraqi Investor green for focus rings */
+    
+    /* Iraqi Investor dark mode custom variables */
+    --investor-primary: 143 50% 45%;     /* Lighter green for dark mode */
+    --investor-secondary: 138 45% 25%;   /* Lighter secondary for dark mode */
+    --investor-accent: 0 75% 60%;        /* Lighter red for dark mode */
+    
+    /* Status colors for operations (dark mode) */
+    --success: 142 71% 55%;              /* Lighter green for dark mode */
+    --warning: 38 92% 60%;               /* Lighter yellow for dark mode */
+    --error: 0 84% 70%;                  /* Lighter red for dark mode */
+    --info: 199 89% 58%;                 /* Lighter blue for dark mode */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Custom scrollbars */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/50 rounded-md;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/70;
+  }
+}
+
+@layer components {
+  /* Iraqi Investor specific component styles */
+  .investor-card {
+    @apply bg-card border border-border/50 rounded-lg shadow-sm;
+  }
+  
+  .investor-input {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  
+  .investor-button {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+  
+  .investor-button-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+  
+  .investor-button-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+  
+  .investor-button-outline {
+    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+  }
+  
+  /* Keep ISX classes for backward compatibility */
+  .isx-card { @apply investor-card; }
+  .isx-input { @apply investor-input; }
+  .isx-button { @apply investor-button; }
+  .isx-button-primary { @apply investor-button-primary; }
+  .isx-button-secondary { @apply investor-button-secondary; }
+  .isx-button-outline { @apply investor-button-outline; }
+  
+  /* Market data specific styles */
+  .market-positive {
+    @apply text-green-600 dark:text-green-400;
+  }
+  
+  .market-negative {
+    @apply text-red-600 dark:text-red-400;
+  }
+  
+  .market-neutral {
+    @apply text-muted-foreground;
+  }
+  
+  .market-change-bg-positive {
+    @apply bg-green-50 border-green-200 dark:bg-green-950/50 dark:border-green-800;
+  }
+  
+  .market-change-bg-negative {
+    @apply bg-red-50 border-red-200 dark:bg-red-950/50 dark:border-red-800;
+  }
+  
+  /* Loading animations */
+  .isx-pulse {
+    @apply animate-pulse bg-muted/50 rounded;
+  }
+  
+  .isx-spin {
+    @apply animate-spin;
+  }
+  
+  /* Striped progress animation for indeterminate states */
+  @keyframes slide-stripe {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 0; }
+  }
+  
+  .animate-slide-stripe {
+    animation: slide-stripe 1s linear infinite;
+  }
+}
+
+@layer utilities {
+  /* ISX specific utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Screen reader only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
+  /* Focus styles for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+  
+  /* Iraqi Investor layout utilities */
+  .investor-container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  
+  .investor-section {
+    @apply py-8 sm:py-12 lg:py-16;
+  }
+  
+  /* License page specific responsive utilities */
+  .license-grid {
+    @apply grid grid-cols-1 lg:grid-cols-5 gap-8;
+  }
+  
+  .license-main-column {
+    @apply lg:col-span-3 space-y-8;
+  }
+  
+  .license-sidebar-column {
+    @apply lg:col-span-2;
+  }
+  
+  /* Mobile-first responsive utilities */
+  .mobile-stack {
+    @apply flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4;
+  }
+  
+  .mobile-full-width {
+    @apply w-full sm:w-auto;
+  }
+  
+  /* Typography utilities */
+  .investor-heading-1 {
+    @apply text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl;
+  }
+  
+  .investor-heading-2 {
+    @apply text-2xl font-semibold tracking-tight sm:text-3xl;
+  }
+  
+  .investor-heading-3 {
+    @apply text-xl font-semibold tracking-tight sm:text-2xl;
+  }
+  
+  .investor-body {
+    @apply text-base leading-7 text-muted-foreground;
+  }
+  
+  .investor-caption {
+    @apply text-sm text-muted-foreground;
+  }
+  
+  /* Keep ISX classes for backward compatibility */
+  .isx-container { @apply investor-container; }
+  .isx-section { @apply investor-section; }
+  .isx-heading-1 { @apply investor-heading-1; }
+  .isx-heading-2 { @apply investor-heading-2; }
+  .isx-heading-3 { @apply investor-heading-3; }
+  .isx-body { @apply investor-body; }
+  .isx-caption { @apply investor-caption; }
+}

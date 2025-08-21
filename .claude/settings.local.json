@@ -1,0 +1,250 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(rm:*)",
+      "Bash(ls:*)",
+      "Bash(mv:*)",
+      "Bash(mkdir:*)",
+      "Bash(grep:*)",
+      "Bash(go build:*)",
+      "Bash(sed:*)",
+      "Bash(timeout:*)",
+      "Bash(./build.bat)",
+      "Bash(cmd:*)",
+      "Bash(go vet:*)",
+      "Bash(go test:*)",
+      "Bash(go clean:*)",
+      "Bash(go tool cover:*)",
+      "Bash(/dev/null)",
+      "Bash(find:*)",
+      "Bash(go mod:*)",
+      "Bash(go get:*)",
+      "Bash(powershell:*)",
+      "Bash(npm ci:*)",
+      "Bash(npm install)",
+      "Bash(npm run build:*)",
+      "Bash(ln:*)",
+      "Bash(cp:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npx tsc:*)",
+      "Bash(touch:*)",
+      "Bash(curl:*)",
+      "Bash(del \"license_backup.dat\")",
+      "Bash(del \"dev\\coverage.html\")",
+      "Bash(del:*)",
+      "Bash(del \"dev\\license.test.exe\")",
+      "Bash(del \"dev\\operation.test.exe\")",
+      "Bash(del \"dev\\websocket.test.exe\")",
+      "Bash(del \"dev\\test-build\")",
+      "Bash(true)",
+      "Bash(./build.ps1)",
+      "Bash(./web-licensed.exe)",
+      "Bash(start:*)",
+      "Bash(taskkill:*)",
+      "Bash(task test)",
+      "Bash(kill:*)",
+      "Bash(pkill:*)",
+      "Bash(go run:*)",
+      "Bash(ISX_LOGGING_OUTPUT=console go run cmd/web-licensed/main.go)",
+      "Bash(env)",
+      "Bash(export ISX_LOGGING_OUTPUT=console)",
+      "Bash(build.bat)",
+      "Bash(cat:*)",
+      "Bash(dir:*)",
+      "Bash(node:*)",
+      "Bash(.build.bat)",
+      "Bash(./start-server.bat)",
+      "Bash(npx:*)",
+      "Bash(npm run dev:*)",
+      "Bash(go:*)",
+      "Bash(CGO_ENABLED=0 go build -ldflags \"-s -w\" -o ../release/scraper.exe ./cmd/scraper)",
+      "Bash(CGO_ENABLED=0 go build -ldflags \"-s -w\" -o ../release/indexcsv.exe ./cmd/indexcsv)",
+      "Bash(NODE_ENV=production npm run build)",
+      "Bash(CGO_ENABLED=0 go build -ldflags \"-s -w\" -o ../release/web-licensed.exe ./cmd/web-licensed)",
+      "Bash(./web-licensed.exe --version)",
+      "Bash(npm test:*)",
+      "Bash(robocopy:*)",
+      "Bash(xcopy:*)",
+      "Bash(run_coverage_analysis.bat)",
+      "Bash(if [ -f \"release/credentials.json.example\" ])",
+      "Bash(then echo \"[OK] credentials.json.example\")",
+      "Bash(else echo \"[MISSING] credentials.json.example\")",
+      "Bash(fi)",
+      "Bash(if [ -f \"release/sheets-config.json.example\" ])",
+      "Bash(then echo \"[OK] sheets-config.json.example\")",
+      "Bash(else echo \"[MISSING] sheets-config.json.example\")",
+      "Bash(if [ -d \"release/data/downloads\" ])",
+      "Bash(then echo \"[OK] Downloads directory\")",
+      "Bash(else echo \"[MISSING] Downloads directory\")",
+      "Bash(if [ -d \"release/data/reports\" ])",
+      "Bash(then echo \"[OK] Reports directory\")",
+      "Bash(else echo \"[MISSING] Reports directory\")",
+      "Bash(if [ -d \"release/logs\" ])",
+      "Bash(then echo \"[OK] Logs directory\")",
+      "Bash(else echo \"[MISSING] Logs directory\")",
+      "Bash(git add:*)",
+      "Bash(./build.bat -target=clean)",
+      "WebFetch(domain:react.dev)",
+      "Bash(for:*)",
+      "Bash(do echo -n \"$file: \")",
+      "Bash(if [ -f \"$file%.go_test.go\" ])",
+      "Bash(then echo \"HAS TEST\")",
+      "Bash(else echo \"NO TEST\")",
+      "Bash(done)",
+      "Bash(npm:*)",
+      "Bash(where npm)",
+      "Bash(./run-server.ps1)",
+      "Bash(./web.exe)",
+      "Bash(test:*)",
+      "Bash(copy:*)",
+      "Bash(if [ -d \"node_modules\" ])",
+      "Bash(then echo \"node_modules exists\")",
+      "Bash(else echo \"node_modules not found - need to install\")",
+      "Bash(if [ -f \"cmd/web-licensed/main.go\" ])",
+      "Bash(then echo \"web-licensed exists\")",
+      "Bash(else echo \"web-licensed does not exist\")",
+      "Bash(tasklist)",
+      "Bash(if exist distlogs*.log del /F /Q distlogs*.log)",
+      "Bash(if exist \"dev\\frontend\\.next\" rmdir /S /Q \"dev\\frontend\\.next\")",
+      "Bash(echo $SHELL)",
+      "Bash(./build.bat -target=frontend)",
+      "Bash(./build.bat -target=test)",
+      "Bash(./build.bat -target=web)",
+      "Bash(ISXPulse.exe:*)",
+      "Bash(./ISXPulse.exe --version)",
+      "Bash(./tools/verify-no-dev-builds.bat)",
+      "Bash(./ISXPulse.exe)",
+      "Bash(./processor.exe --in data/downloads --out data/reports)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebSearch",
+      "Bash(python:*)",
+      "Bash(./build.bat -target=all)",
+      "Bash(./scraper.exe)",
+      "Bash(./indexcsv.exe)",
+      "Bash(./build.bat -target=processor)",
+      "WebFetch(domain:api.highcharts.com)",
+      "WebFetch(domain:jsfiddle.net)",
+      "Bash(pip install:*)",
+      "Bash(if [ -f \"api/web-licensed.exe\" ])",
+      "Bash(else echo \"api/web-licensed.exe not found\")",
+      "Bash(if [ -d \"web/node_modules\" ])",
+      "Bash(else echo \"web/node_modules directory not found\")",
+      "Bash(if [ -d \"api/cmd/web-licensed/frontend\" ])",
+      "Bash(else echo \"frontend directory not found\")",
+      "Bash(./license-generator.exe -help)",
+      "Bash(./license-generator.exe:*)",
+      "Bash(./test.bat)",
+      "Bash(echo \"Exit code: $?\")",
+      "Bash(./test-simple.bat)",
+      "Bash(set)",
+      "Bash(export GOOGLE_APPS_SCRIPT_URL=\"https://script.google.com/a/macros/almesaody.com/s/AKfycbxmWSx69EB9SGUxnXyKr39jq8NhWXFIdNrVaxwhS4LslFVlKZegX0ecxZFPUEnMEVsv1w/exec\")",
+      "Bash(export ENABLE_SCRATCH_CARD_MODE=true)",
+      "Bash(export ENABLE_DEVICE_FINGERPRINT=true)",
+      "Bash(./build.bat -target=all -scratch-card)",
+      "Bash(./build.bat -target=web -scratch-card)",
+      "Bash(./build.bat -target=indexcsv)",
+      "Bash(echo:*)",
+      "WebFetch(domain:www.highcharts.com)",
+      "Bash(if [ -f \"dist/data/reports/combined/isx_combined_data.csv\" ])",
+      "Bash(then head -1 dist/data/reports/combined/isx_combined_data.csv)",
+      "Bash(else echo \"Combined data file not found\")",
+      "Bash(tree:*)"
+    ],
+    "deny": [],
+    "additionalDirectories": [
+      "C:\\c\\ISXDailyReportsScrapper",
+      "C:\\c\\ISXDailyReportsScrapper\\api\\services",
+      "C:\\c"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "github",
+    "sentry"
+  ],
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:\\ISXDailyReportsScrapper\\.claude\\hooks\\ntfy-wrapper.bat action-required"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:\\ISXDailyReportsScrapper\\.claude\\hooks\\ntfy-wrapper.bat task-complete"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:\\ISXDailyReportsScrapper\\.claude\\hooks\\ntfy-wrapper.bat agent-complete"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash(*build.bat*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:\\ISXDailyReportsScrapper\\.claude\\hooks\\ntfy-wrapper.bat build-complete"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash(*test*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:\\ISXDailyReportsScrapper\\.claude\\hooks\\ntfy-wrapper.bat test-complete"
+          }
+        ]
+      },
+      {
+        "matcher": "MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:\\ISXDailyReportsScrapper\\.claude\\hooks\\ntfy-wrapper.bat files-modified"
+          }
+        ]
+      },
+      {
+        "matcher": "TodoWrite",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:\\ISXDailyReportsScrapper\\.claude\\hooks\\ntfy-wrapper.bat task-complete"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:\\ISXDailyReportsScrapper\\.claude\\hooks\\ntfy-wrapper.bat session-start"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "input=$(cat); session_id=$(echo \"$input\" | jq -r '.session_id // \"unknown\"'); current_dir=$(echo \"$input\" | jq -r '.workspace.current_dir // \".\"'); session_dir=\"$HOME/.claude/sessions\"; mkdir -p \"$session_dir\"; session_file=\"$session_dir/$session_id.json\"; if [[ ! -f \"$session_file\" ]]; then echo \"{\\\"start_time\\\": $(date +%s), \\\"lines_edited\\\": 0}\" > \"$session_file\"; fi; session_data=$(cat \"$session_file\"); start_time=$(echo \"$session_data\" | jq -r '.start_time // 0'); lines_edited=$(echo \"$session_data\" | jq -r '.lines_edited // 0'); current_time=$(date +%s); session_duration=$((current_time - start_time)); session_hours=$((session_duration / 3600)); session_minutes=$(((session_duration % 3600) / 60)); if [[ $session_hours -gt 0 ]]; then session_time_str=\"${session_hours}h ${session_minutes}m\"; else session_time_str=\"${session_minutes}m\"; fi; weather=$(curl -s \"wttr.in/Basrah,Iraq?format=%C+%t\" 2>/dev/null | head -1 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' || echo \"Weather unavailable\"); if [[ ${#weather} -gt 25 ]]; then weather=$(echo \"$weather\" | cut -c1-22)...; fi; current_time_str=$(TZ='Asia/Baghdad' date '+%H:%M:%S'); module_name=\"Unknown\"; if [[ -n \"$current_dir\" && \"$current_dir\" != \".\" ]]; then if [[ \"$current_dir\" == *\"/dev/frontend\"* ]]; then if [[ \"$current_dir\" == *\"/components/\"* ]]; then module_name=\"Frontend/$(basename \"$(dirname \"$current_dir\")\")/$(basename \"$current_dir\")\"; elif [[ \"$current_dir\" == *\"/app/\"* ]]; then module_name=\"Frontend/Pages/$(basename \"$current_dir\")\"; else module_name=\"Frontend/$(basename \"$current_dir\")\"; fi; elif [[ \"$current_dir\" == *\"/dev/internal/\"* ]]; then module_name=\"Backend/$(basename \"$current_dir\")\"; elif [[ \"$current_dir\" == *\"/dev/cmd/\"* ]]; then module_name=\"CLI/$(basename \"$current_dir\")\"; elif [[ \"$current_dir\" == *\"/docs\"* ]]; then module_name=\"Documentation\"; else module_name=$(echo \"$current_dir\" | sed 's/.*\\///g' | tail -c 20); fi; fi; lines_edited=$((lines_edited + 1)); echo \"{\\\"start_time\\\": $start_time, \\\"lines_edited\\\": $lines_edited}\" > \"$session_file\"; printf \"⏱️  %s | 🌤️  %s | 🕐 %s | 📁 %s | ✏️  %d lines\" \"$session_time_str\" \"$weather\" \"$current_time_str\" \"$module_name\" \"$lines_edited\""
+  }
+}
