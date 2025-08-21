@@ -8,6 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./api
 
     steps:
       - name: Checkout repository
@@ -16,7 +20,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version-file: go.mod
+          go-version-file: api/go.mod
 
       - name: Cache modules
         uses: actions/cache@v4
@@ -24,7 +28,7 @@ jobs:
           path: |
             ~/go/pkg/mod
             ~/.cache/go-build
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          key: ${{ runner.os }}-go-${{ hashFiles('api/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-
 
