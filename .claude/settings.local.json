@@ -150,7 +150,8 @@
       "Bash(then head -1 dist/data/reports/combined/isx_combined_data.csv)",
       "Bash(else echo \"Combined data file not found\")",
       "Bash(tree:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "additionalDirectories": [
