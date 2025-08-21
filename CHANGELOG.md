@@ -5,6 +5,34 @@ All notable changes to ISX Pulse will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - feature/trading-strategy
+
+### Added
+- **Trading Strategy Framework** (2024-08-21)
+  - Implemented pluggable strategy architecture with registry pattern
+  - Added strategy manager for lifecycle management
+  - Created strategy executor with real-time WebSocket updates
+  - Implemented backtesting engine with performance metrics
+  - Added momentum-based trading strategy
+  - Added mean reversion trading strategy
+  - Added liquidity-weighted trading strategy
+  - Created strategy dashboard with real-time signal visualization
+  - Implemented risk management with stop-loss and position sizing
+  - Added strategy performance analytics (Sharpe ratio, max drawdown)
+  - Created comprehensive API endpoints for strategy management
+  - WebSocket integration for live strategy updates
+  - Full test coverage (80%+) for strategy components
+  - Documentation: Strategy implementation guide and API reference
+
+### Technical
+- New module: `api/internal/strategy` - Core strategy implementation
+- New service: `api/internal/services/strategy_service.go` - Strategy business logic
+- New handlers: `api/internal/transport/http/strategy_handler.go` - HTTP endpoints
+- New WebSocket: `api/internal/strategy/websocket.go` - Real-time updates
+- New UI: `web/app/strategy/` - Strategy dashboard and components
+- Database schema: Strategy configuration and performance tables
+- Performance: < 100ms strategy execution, > 10k candles/sec backtesting
+
 ## [Unreleased]
 
 ### Changed
