@@ -22,6 +22,15 @@ jobs:
         with:
           go-version-file: api/go.mod
 
+      - name: Verify frontend placeholder exists
+        run: |
+          if [ ! -f cmd/web-licensed/frontend/index.html ]; then
+            echo "Creating frontend placeholder for CI"
+            mkdir -p cmd/web-licensed/frontend
+            echo '<!DOCTYPE html><html><body>CI Build Placeholder</body></html>' > cmd/web-licensed/frontend/index.html
+          fi
+          ls -la cmd/web-licensed/frontend/
+
       - name: Cache modules
         uses: actions/cache@v4
         with:
@@ -34,6 +43,9 @@ jobs:
 
       - name: Download dependencies
         run: go mod download
+
+      - name: Build
+        run: go build -v ./...
 
       - name: Vet
         run: go vet ./...

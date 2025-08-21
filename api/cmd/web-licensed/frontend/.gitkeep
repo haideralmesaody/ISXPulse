@@ -1,0 +1,2 @@
+# This file ensures the frontend directory exists for CI builds
+# The actual frontend is built via build.bat and embedded during production builds
